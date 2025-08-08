@@ -65,7 +65,7 @@ fi
 
 # Attach postgres cluster to the app if specified.
 if [ -n "$INPUT_POSTGRES" ]; then
-  flyctl postgres attach "$INPUT_POSTGRES" --app "$app" || true
+  flyctl postgres attach "$INPUT_POSTGRES" --app "$app" --database-user "$app-$(date +%s)" --yes || true
 fi
 
 # Trigger the deploy of the new version.
